@@ -19,19 +19,6 @@ public class Main {
         }
 
 
-        City[] arrCities = cities.toArray(new City[0]);
-
-        int index = -1;
-        int maxPopulation = Integer.MIN_VALUE;
-
-        for (int i = 0; i < arrCities.length; i++) {
-            int population = arrCities[i].getPopulation();
-            if (population > maxPopulation) {
-                maxPopulation = population;
-                index = i;
-            }
-        }
-
         System.out.println("Сортировка списка городов по наименованию в алфавитном порядке по убыванию без учета регистра");
         cities.stream()
                 .sorted(Comparator.comparing(City::getName, String::compareToIgnoreCase).reversed())
@@ -49,6 +36,18 @@ public class Main {
 
         System.out.println(" необходимо преобразовать список городов в массив." +
                 "А затем путем перебора массива найти индекс элемента и значение с наибольшим количеством жителей города");
+        City[] arrCities = cities.toArray(new City[0]);
+
+        int index = -1;
+        int maxPopulation = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arrCities.length; i++) {
+            int population = arrCities[i].getPopulation();
+            if (population > maxPopulation) {
+                maxPopulation = population;
+                index = i;
+            }
+        }
         System.out.printf("[%d] = %d", index, maxPopulation);
         System.out.println("");
 
